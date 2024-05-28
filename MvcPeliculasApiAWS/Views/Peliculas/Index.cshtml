@@ -1,0 +1,34 @@
+﻿@model List<Pelicula>
+
+<h1 class="text-primary">Peliculas API Gateway AWS</h1>
+
+<p>
+    <a asp-controller="Peliculas" asp-action="Create">
+        Create Pelicula
+    </a>
+</p>
+
+<div class="d-flex flex-wrap gap-4 mt-5">
+    @foreach (Pelicula peli in Model)
+    {
+        <div class="card" style="width: 18rem;">
+            <img src="~/images/@peli.Foto" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">@peli.Titulo</h5>
+                <p class="card-text">Precio: @peli.Precio</p>
+                <a asp-controller="Peliculas" asp-action="Details"
+                   asp-route-idpelicula="@peli.IdPelicula" class="btn btn-outline-primary">
+                    Details
+                </a>
+                <a asp-controller="Peliculas" asp-action="Edit"
+                   asp-route-idpelicula="@peli.IdPelicula" class="btn btn-outline-info">
+                    Update
+                </a>
+                <a asp-controller="Peliculas" asp-action="Delete"
+                   asp-route-idpelicula="@peli.IdPelicula" class="btn btn-danger">
+                    Delete
+                </a>
+            </div>
+        </div>
+    }
+</div>
